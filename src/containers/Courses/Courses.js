@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import {Route, NavLink} from 'react-router-dom';
+import Course from '../Course/Course';
+import courseList from '../../courseList';
 
 import './Courses.css';
 
 class Courses extends Component {
     state = {
-        courses: [
-            { id: 1, title: 'Angular - The Complete Guide' },
-            { id: 2, title: 'Vue - The Complete Guide' },
-            { id: 3, title: 'PWA - The Complete Guide' }
-        ]
+        courseList
     }
 
     render () {
@@ -17,11 +16,14 @@ class Courses extends Component {
                 <h1>Amazing Udemy Courses</h1>
                 <section className="Courses">
                     {
-                        this.state.courses.map( course => {
-                            return <article className="Course" key={course.id}>{course.title}</article>;
+                        this.state.courseList.map( course => {
+                            return <NavLink key={course.id} to={'/course/'+course.id} ><article className="Course" 
+                            >{course.title}</article></NavLink>;
                         } )
                     }
                 </section>
+                <Route path="/course/:id" component={Course}/>
+               
             </div>
         );
     }
