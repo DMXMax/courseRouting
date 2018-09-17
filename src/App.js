@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
 import Courses from './containers/Courses/Courses';
 import Users from './containers/Users/Users';
 import Aux from './AuxFile'
+import fail404 from './containers/file404';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <Aux>
 
         <BrowserRouter>
+        
           <Aux>
             <header>
               <nav>
@@ -34,11 +36,14 @@ class App extends Component {
                 <Route path="/course" component={Courses} />
                 <Route path="/courses" component={Courses} />
                 <Route path="/users" component={Users} />
-              </Switch>
+                <Route component={fail404}/>
+                </Switch>
+              
 
 
             </div>
           </Aux>
+          
         </BrowserRouter>
       </Aux>
     );
